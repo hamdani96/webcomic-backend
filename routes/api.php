@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ComicController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('user', [UserController::class, 'fetch']);
     Route::post('user', [UserController::class, 'updateProfile']);
     Route::post('logout', [UserController::class, 'logout']);
+
+    // Get Comic
+    Route::get('comic', [ComicController::class, 'getComic']);
+    Route::put('comic/{id}', [ComicController::class, 'getDetailComic']);
+    Route::put('readComic/{id}', [ComicController::class, 'getReadComic']);
 });
 
 Route::post('login', [UserController::class, 'login']);
